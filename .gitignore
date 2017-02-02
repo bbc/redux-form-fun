@@ -1,3 +1,3 @@
 node_modules
-dist/app.built.js
+dist/app.bundle.js
 .DS_Store
