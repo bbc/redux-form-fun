@@ -23,6 +23,7 @@ class MediaPresentation extends React.Component {
           { (pidTouched && pidError === 'REQUIRED') ? <p>Pid is required</p> : undefined }
           { (pidTouched && pidError === 'NOTPID') ? <p>Invalid Pid</p> : undefined }
         </div>
+        <span>PID</span>
       <Field name="pid" component="input" type="text" placeholder="e.g. p345d88g" validate={[isPid, required]}/>
     </div>
   )

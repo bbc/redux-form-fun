@@ -44,11 +44,16 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
-        <span>The current value is {this.props.count}.</span>
-        <span>{JSON.stringify(this.props.state)}</span>
+        <hr/>
         { (this.props.counterError === 'BELOW0') ? <p>Value can't be less than 0'</p> : undefined }
-        <span onClick={this.props.increment}>+</span>
-        <span onClick={this.props.decrement}>-</span>
+        <br/>
+        <span>counter</span>
+        <button type='button' onClick={this.props.increment}>+</button>
+        <button type='button' onClick={this.props.decrement}>-</button>
+        <br/>
+        <span>The current value is {this.props.count}.</span>
+        <hr/>
+        <span>{JSON.stringify(this.props.state)}</span>
       </div>
   )
   }

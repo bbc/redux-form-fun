@@ -14193,6 +14193,29 @@ var Counter = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement('hr', null),
+        this.props.counterError === 'BELOW0' ? _react2.default.createElement(
+          'p',
+          null,
+          'Value can\'t be less than 0\''
+        ) : undefined,
+        _react2.default.createElement('br', null),
+        _react2.default.createElement(
+          'span',
+          null,
+          'counter'
+        ),
+        _react2.default.createElement(
+          'button',
+          { type: 'button', onClick: this.props.increment },
+          '+'
+        ),
+        _react2.default.createElement(
+          'button',
+          { type: 'button', onClick: this.props.decrement },
+          '-'
+        ),
+        _react2.default.createElement('br', null),
         _react2.default.createElement(
           'span',
           null,
@@ -14200,25 +14223,11 @@ var Counter = function (_React$Component) {
           this.props.count,
           '.'
         ),
+        _react2.default.createElement('hr', null),
         _react2.default.createElement(
           'span',
           null,
           JSON.stringify(this.props.state)
-        ),
-        this.props.counterError === 'BELOW0' ? _react2.default.createElement(
-          'p',
-          null,
-          'Value can\'t be less than 0\''
-        ) : undefined,
-        _react2.default.createElement(
-          'span',
-          { onClick: this.props.increment },
-          '+'
-        ),
-        _react2.default.createElement(
-          'span',
-          { onClick: this.props.decrement },
-          '-'
         )
       );
     }
@@ -14336,6 +14345,11 @@ var MediaPresentation = function (_React$Component) {
             'Invalid Pid'
           ) : undefined
         ),
+        _react2.default.createElement(
+          'span',
+          null,
+          'PID'
+        ),
         _react2.default.createElement(_reduxForm.Field, { name: 'pid', component: 'input', type: 'text', placeholder: 'e.g. p345d88g', validate: [isPid, required] })
       );
     }
@@ -14386,11 +14400,11 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 var mapStateToProps = function mapStateToProps(state) {
   return {
     state: state,
-    xvalue: (0, _lodash2.default)(state, ['form', 'simple', 'values', 'X'], 'Empty'),
-    xTouched: (0, _lodash2.default)(state, ['form', 'simple', 'fields', 'X', 'touched'], false),
-    xerror: (0, _lodash2.default)(state, ['form', 'simple', 'syncErrors', 'X'], undefined),
-    yemailTouched: (0, _lodash2.default)(state, ['form', 'simple', 'fields', 'Y', 'touched'], false),
-    yemailError: (0, _lodash2.default)(state, ['form', 'simple', 'syncErrors', 'Y'], undefined)
+    nameValue: (0, _lodash2.default)(state, ['form', 'simple', 'values', 'name'], 'Empty'),
+    nameTouched: (0, _lodash2.default)(state, ['form', 'simple', 'fields', 'name', 'touched'], false),
+    nameError: (0, _lodash2.default)(state, ['form', 'simple', 'syncErrors', 'name'], undefined),
+    emailTouched: (0, _lodash2.default)(state, ['form', 'simple', 'fields', 'email', 'touched'], false),
+    emailError: (0, _lodash2.default)(state, ['form', 'simple', 'syncErrors', 'email'], undefined)
   };
 };
 
@@ -14417,10 +14431,10 @@ var QuotePresentation = function (_React$Component) {
     key: 'render',
     value: function render() {
       var _props = this.props,
-          xerror = _props.xerror,
-          xTouched = _props.xTouched,
-          yemailError = _props.yemailError,
-          yemailTouched = _props.yemailTouched;
+          nameError = _props.nameError,
+          nameTouched = _props.nameTouched,
+          emailError = _props.emailError,
+          emailTouched = _props.emailTouched;
 
       return _react2.default.createElement(
         'div',
@@ -14428,29 +14442,39 @@ var QuotePresentation = function (_React$Component) {
         _react2.default.createElement(
           'div',
           null,
-          xTouched && xerror === 'REQUIRED' ? _react2.default.createElement(
+          nameTouched && nameError === 'REQUIRED' ? _react2.default.createElement(
             'p',
             null,
-            'X is required'
+            'Name is required'
           ) : undefined,
-          xTouched && xerror === 'TOOLONG' ? _react2.default.createElement(
+          nameTouched && nameError === 'TOOLONG' ? _react2.default.createElement(
             'p',
             null,
-            'X is Tooo long!'
+            'Name is too long!'
           ) : undefined,
-          yemailTouched && yemailError === 'INVALID-EMAIL' ? _react2.default.createElement(
+          emailTouched && emailError === 'INVALID-EMAIL' ? _react2.default.createElement(
             'p',
             null,
             'Email address is invalid'
           ) : undefined,
-          yemailTouched && yemailError === 'REQUIRED' ? _react2.default.createElement(
+          emailTouched && emailError === 'REQUIRED' ? _react2.default.createElement(
             'p',
             null,
             'Email is required'
           ) : undefined
         ),
-        _react2.default.createElement(_reduxForm.Field, { name: 'X', component: 'input', type: 'text', placeholder: 'X', validate: [maxLength15, required] }),
-        _react2.default.createElement(_reduxForm.Field, { name: 'Y', component: 'input', type: 'text', placeholder: 'Y', validate: [isEmail, required] })
+        _react2.default.createElement(
+          'span',
+          null,
+          'name'
+        ),
+        _react2.default.createElement(_reduxForm.Field, { name: 'name', component: 'input', type: 'text', placeholder: 'Name', validate: [maxLength15, required] }),
+        _react2.default.createElement(
+          'span',
+          null,
+          'email'
+        ),
+        _react2.default.createElement(_reduxForm.Field, { name: 'email', component: 'input', type: 'text', placeholder: 'Email', validate: [isEmail, required] })
       );
     }
   }]);
